@@ -10,22 +10,22 @@ readme = "README.md"
 authors = [
     { name = "Luca Lobefaro", email = "luca.lobefaro95@gmail.com" },
 ]
-requires-python = "==3.10.9"
+requires-python = ">=3.10.9"
 dependencies = [
     "numpy",
     "tqdm",
     "pathlib",
     "rich",
-    "open3d==0.16",
-    "polyscope==2.2.1",
+    "open3d>=0.16",
+    "polyscope>=2.2.1",
     "typer==0.6.0",
     "pyyaml>=5.4.1",
     "pyquaternion",
     "pydantic>=1.10.17",
-    "opencv-python==4.9.0.80",
-    "matplotlib==3.5.1",
-    "torch==2.3.0",
-    "ultralytics==8.2.64",
+    "opencv-python>=4.9.0.80",
+    "matplotlib>=3.5.1",
+    "torch>=2.3.0",
+    "ultralytics>=8.2.64",
 ]
 
 [project.scripts]
