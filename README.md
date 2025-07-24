@@ -113,7 +113,7 @@ As we decided to continue the development of this software after papers acceptan
 git checkout ral2025
 ```
 
-The purpose of this software goes beyond the research done with the papers, we aim to push this research direction even more. For this reason, we strongly suggest you to use the version on the main branch because it allows better results and higher performances. The iros2024 branch exists only to ensure results reproducibility.
+The purpose of this software goes beyond the research done with the papers, we aim to push this research direction even more. For this reason, we strongly suggest you to use the version on the main branch because it allows better results and higher performances. The ral2025 branch exists only to ensure results reproducibility.
 
 
 ## Acknowledgement
