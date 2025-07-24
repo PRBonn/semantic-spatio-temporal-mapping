@@ -1,4 +1,4 @@
-DATASET_FOLDER="path/to/dataset/"
+DATASET_FOLDER="data/"
 
 printf "1.June20 - row3 (INTRA - CENTERS3D)\n"
 st_mapping-semantic_mapping $DATASET_FOLDER/1.June20/row3 --config config/default.yaml

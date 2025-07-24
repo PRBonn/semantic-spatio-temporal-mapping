@@ -1,5 +1,6 @@
 <div align="center">
   <h1>Semantic Spatio-Temporal Mapping</h1>
+  <h1>REPRODUCIBILITY BRANCH</h1>
     <a href="https://github.com/PRBonn/semantic-spatio-temporal-mapping#Installation"><img src="https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black" /></a>
     <a href="https://github.com/PRBonn/semantic-spatio-temporal-mapping#Usage"><img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=python&logoColor=ffdd54" /></a>
     <a href="https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/lobefaro2025ral.pdf"><img src="https://img.shields.io/badge/Paper-pdf-<COLOR>.svg?style=flat-square" /></a>
@@ -15,55 +16,30 @@
 
 </div>
 
-## Dependencies and Support
-In order to be able to install the python package you need the essential software installable with the following command on Ubuntu:
+
+## Introduction 
+You are in the reproducibility branch. Note: this branch is here for the only purpose of allowing reproducibility for our [paper](https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/lobefaro2025ral.pdf).
+If you are not here for this reason, go back to the main branch. Otherwise, follow the instructions.
+
+
+# Dependencies
+You need to install docker and docker-compose. Please, search by yourself how to install them.
+You need a GPU with CUDA support also.
+
+
+# Usage
+In order to run the code and obtain the same numbers showed in the paper, you first need to get the data. For that, please [contact us](mailto:llobefar@uni-bonn.de).
+
+Once you have the data, open the file ```docker-compose.yml``` and substitute "PATHTODATASET" with the path to the dataset on your machine.
+
+Finally, you can just run the following commands:
 
 ```
-sudo apt-get install --no-install-recommends -y build-essential cmake pybind11-dev python3-dev python3-pip
+docker-compose build
+docker-compose run --rm ral2025_reprod
 ```
 
-Then, all the dependencies will be handled by the system, you just need to follow the instructions in the [next section](#installation).
-
-If you want to have dependencies installed on your machine, you can run the following command on Ubuntu:
-
-```
-sudo apt-get install libeigen3-dev libopencv-dev libtbb-dev libceres-dev 
-```
-
-For [tsl-robin map](https://github.com/Tessil/robin-map) and [Sophus](https://github.com/strasdat/Sophus), please refer to the relative github repos for installation from source.
-
-**NOTE**: this software has been tested only on Ubuntu 24.04 machines, we do not ensure support for other platforms right now.
-
-Neverthless, if you are on Ubuntu 20.04, be sure to install [ceres-solver](http://ceres-solver.org/installation.html) version *2.2.0* from source and turn off the option USE_SYSTEM_TBB for CMake (this will avoid to use the old version of openTBB).
-
-**NOTE 2**: if you decide to not use your system installed version of Ceres, then be ready to huge memory consumption during building. For this reason, if you don't have a big RAM, just install libceres-dev with the command above.
-
-## Installation
-All you have to do is to clone this repo:
-
-```
-git clone https://github.com/PRBonn/semantic-spatio-temporal-mapping
-```
-
-and install it with:
-
-```
-make install
-```
-
-## Usage
-This software gives you the possibility to perform two different tasks:
-
-- Semantic mapping -> generate a map from a sequence of RGBD images, the final map will be a instance segmented map (use -v for a nice visualization):
-    ```
-    st_mapping-semantic_mapping --help
-    ```
-- Temporal-consistent semantic mapping aligned on a given map -> generate a map from a sequence of RGBD images aligned with a given reference map recorded previously on the same environment, even with drastic changes. The reference map should be generate with the previous command. The result will be a point cloud with instance annotations consistent with the reference map (use -v for a nice visualization):
-    ```
-    st_mapping-semantic_mapping_onref --help
-    ```
-
-**IMPORTANT**: to use the generic dataloader (the one used by default) you need to have a "params.yaml" in the dataset folder that describes the camera parameters. Please, refer to our [example file](https://github.com/PRBonn/spatio-temporal-mapping/blob/main/examples/params.yaml) or write your own dataloader. This feature will be updated soon to be more user-friendly.
+It will build the docker image and then build and run the pipeline inside the container. You will see the outputs on screen, with the results at the end. Be patient while building.
 
 
 ## Citations and LICENSE
@@ -104,16 +80,6 @@ Monitoring}},
   doi = {},
 }
 ```
-
-
-## Papers Results
-As we decided to continue the development of this software after papers acceptance, we created a git branch so that researchers can consistently reproduce the results of the publication. To checkout at this branch, you can run the following command:
-
-```
-git checkout ral2025
-```
-
-The purpose of this software goes beyond the research done with the papers, we aim to push this research direction even more. For this reason, we strongly suggest you to use the version on the main branch because it allows better results and higher performances. The iros2024 branch exists only to ensure results reproducibility.
 
 
 ## Acknowledgement

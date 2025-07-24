@@ -12,7 +12,7 @@ authors = [
 ]
 requires-python = "==3.10.9"
 dependencies = [
-    "numpy",
+    "numpy<2.0",
     "tqdm",
     "pathlib",
     "rich",
@@ -25,6 +25,7 @@ dependencies = [
     "opencv-python==4.9.0.80",
     "matplotlib==3.5.1",
     "torch==2.3.0",
+    "dill",
     "ultralytics==8.2.64",
 ]
 
