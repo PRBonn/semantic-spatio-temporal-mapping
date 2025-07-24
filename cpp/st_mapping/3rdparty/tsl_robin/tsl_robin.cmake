@@ -2,7 +2,7 @@
 # NOTE: This file has been adapted from the Kiss-ICP project, but copyright
 # still belongs to Kiss-ICP. All rights reserved
 # ----------------------------------------------------------------------------
-# -              Kiss-ICP: https://github.com/PRBonn/kiss-icp                -
+# * Kiss-ICP: https://github.com/PRBonn/kiss-icp                -
 # ----------------------------------------------------------------------------
 # MIT License
 #
@@ -27,5 +27,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 include(FetchContent)
-FetchContent_Declare(tessil SYSTEM URL https://github.com/Tessil/robin-map/archive/refs/tags/v1.3.0.tar.gz)
+FetchContent_Declare(
+  tessil
+  SYSTEM
+  URL https://github.com/Tessil/robin-map/archive/refs/tags/v1.4.0.tar.gz)
 FetchContent_MakeAvailable(tessil)

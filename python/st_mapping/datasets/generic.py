@@ -235,7 +235,7 @@ class GenericDataset:
         return cv2.imread(
             str(self._main_folder / "instances_masks" / self._rgb_filenames[idx]),
             cv2.IMREAD_UNCHANGED,
-        )
+        ).astype(np.int64)
 
     def get_image(
         self,

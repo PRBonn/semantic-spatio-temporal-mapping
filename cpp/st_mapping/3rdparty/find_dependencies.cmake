@@ -2,7 +2,7 @@
 # NOTE: This file has been adapted from the Kiss-ICP project, but copyright
 # still belongs to Kiss-ICP. All rights reserved
 # ----------------------------------------------------------------------------
-# -              Kiss-ICP: https://github.com/PRBonn/kiss-icp                -
+# * Kiss-ICP: https://github.com/PRBonn/kiss-icp                -
 # ----------------------------------------------------------------------------
 # MIT License
 #
@@ -44,9 +44,15 @@ macro(find_external_dependency PACKAGE_NAME TARGET_NAME INCLUDED_CMAKE_PATH)
   endif()
 endmacro()
 
-find_external_dependency("Eigen3" "Eigen3::Eigen" "${CMAKE_CURRENT_LIST_DIR}/eigen/eigen.cmake")
-find_external_dependency("Sophus" "Sophus::Sophus" "${CMAKE_CURRENT_LIST_DIR}/sophus/sophus.cmake")
-find_external_dependency("TBB" "TBB::tbb" "${CMAKE_CURRENT_LIST_DIR}/tbb/tbb.cmake")
-find_external_dependency("tsl-robin-map" "tsl::robin_map" "${CMAKE_CURRENT_LIST_DIR}/tsl_robin/tsl_robin.cmake")
-find_external_dependency("OpenCV" "opencv_core" "${CMAKE_CURRENT_LIST_DIR}/opencv/opencv.cmake")
-find_external_dependency("Ceres" "Ceres::ceres" "${CMAKE_CURRENT_LIST_DIR}/ceres/ceres.cmake")
+find_external_dependency("Eigen3" "Eigen3::Eigen"
+                         "${CMAKE_CURRENT_LIST_DIR}/eigen/eigen.cmake")
+find_external_dependency("Sophus" "Sophus::Sophus"
+                         "${CMAKE_CURRENT_LIST_DIR}/sophus/sophus.cmake")
+find_external_dependency("TBB" "TBB::tbb"
+                         "${CMAKE_CURRENT_LIST_DIR}/tbb/tbb.cmake")
+find_external_dependency("tsl-robin-map" "tsl::robin_map"
+                         "${CMAKE_CURRENT_LIST_DIR}/tsl_robin/tsl_robin.cmake")
+find_external_dependency("OpenCV" "opencv_core"
+                         "${CMAKE_CURRENT_LIST_DIR}/opencv/opencv.cmake")
+find_external_dependency("Ceres" "Ceres::ceres"
+                         "${CMAKE_CURRENT_LIST_DIR}/ceres/ceres.cmake")

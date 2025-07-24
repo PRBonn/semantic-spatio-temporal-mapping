@@ -1,6 +1,7 @@
 # MIT License
 #
-# Copyright (c) 2024 Luca Lobefaro, Meher V.R. Malladi, Tiziano Guadagnino, Cyrill Stachniss
+# Copyright (c) 2024 Luca Lobefaro, Meher V.R. Malladi, Tiziano Guadagnino,
+# Cyrill Stachniss
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,16 +20,28 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-set(USE_CUDA OFF CACHE BOOL "If use CUDA with ceres-solver")
-set(BUILD_TESTING OFF CACHE BOOL "If build or not ceres-solver tests")
-set(BUILD_EXAMPLES OFF CACHE BOOL "If build or not ceres-solver examples")
-set(BUILD_BENCHMARKS OFF CACHE BOOL "If build or not ceres-solver benchmarks")
-set(BUILD_DOCUMENTATION OFF CACHE BOOL "If build or not ceres-solver documentation")
-set(MINIGLOG ON CACHE BOOL "Avoid using glog if not installed")
+set(USE_CUDA
+    OFF
+    CACHE BOOL "If use CUDA with ceres-solver")
+set(BUILD_TESTING
+    OFF
+    CACHE BOOL "If build or not ceres-solver tests")
+set(BUILD_EXAMPLES
+    OFF
+    CACHE BOOL "If build or not ceres-solver examples")
+set(BUILD_BENCHMARKS
+    OFF
+    CACHE BOOL "If build or not ceres-solver benchmarks")
+set(BUILD_DOCUMENTATION
+    OFF
+    CACHE BOOL "If build or not ceres-solver documentation")
+set(MINIGLOG
+    ON
+    CACHE BOOL "Avoid using glog if not installed")
 
 include(FetchContent)
-FetchContent_Declare(ceres 
-                     GIT_REPOSITORY https://github.com/ceres-solver/ceres-solver.git 
-                     GIT_TAG 2.2.0)
+FetchContent_Declare(
+  ceres
+  GIT_REPOSITORY https://github.com/ceres-solver/ceres-solver.git
+  GIT_TAG 2.2.0)
 FetchContent_MakeAvailable(ceres)
-

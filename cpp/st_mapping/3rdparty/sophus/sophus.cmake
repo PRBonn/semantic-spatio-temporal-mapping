@@ -2,11 +2,12 @@
 # NOTE: This file has been adapted from the Kiss-ICP project, but copyright
 # still belongs to Kiss-ICP. All rights reserved
 # ----------------------------------------------------------------------------
-# -              Kiss-ICP: https://github.com/PRBonn/kiss-icp                -
+# * Kiss-ICP: https://github.com/PRBonn/kiss-icp                -
 # ----------------------------------------------------------------------------
 # MIT License
 #
-# # Copyright (c) 2023 Saurabh Gupta, Ignacio Vizzo, Cyrill Stachniss, University of Bonn
+# # Copyright (c) 2023 Saurabh Gupta, Ignacio Vizzo, Cyrill Stachniss,
+# University of Bonn
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,10 +28,19 @@
 # SOFTWARE.
 include(FetchContent)
 
-set(SOPHUS_USE_BASIC_LOGGING ON CACHE BOOL "Don't use fmt for Sophus library")
-set(BUILD_SOPHUS_TESTS OFF CACHE BOOL "Don't build Sophus tests")
-set(BUILD_SOPHUS_EXAMPLES OFF CACHE BOOL "Don't build Sophus Examples")
+set(SOPHUS_USE_BASIC_LOGGING
+    ON
+    CACHE BOOL "Don't use fmt for Sophus library")
+set(BUILD_SOPHUS_TESTS
+    OFF
+    CACHE BOOL "Don't build Sophus tests")
+set(BUILD_SOPHUS_EXAMPLES
+    OFF
+    CACHE BOOL "Don't build Sophus Examples")
 
-FetchContent_Declare(sophus SYSTEM URL https://github.com/strasdat/Sophus/archive/refs/tags/1.22.10.tar.gz)
+FetchContent_Declare(
+  sophus
+  SYSTEM
+  URL https://github.com/strasdat/Sophus/archive/refs/tags/1.24.6.tar.gz)
 
 FetchContent_MakeAvailable(sophus)

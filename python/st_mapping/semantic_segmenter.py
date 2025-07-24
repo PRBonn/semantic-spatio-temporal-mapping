@@ -103,7 +103,7 @@ class SemanticSegmenter:
         labeled_rgb_img = yolo_results[0].plot(labels=False, conf=False)
 
         # Compute mask and instance centers
-        instances_mask = np.zeros(depth_img.shape[:2], np.uint8)
+        instances_mask = np.zeros(depth_img.shape[:2], np.uint64)
         if yolo_results[0].masks is None:
             return labeled_rgb_img, instances_mask
         for i in range(0, len(yolo_results[0].masks.xy)):
@@ -115,7 +115,7 @@ class SemanticSegmenter:
             cv2.drawContours(binary_mask, [contour], -1, (1, 0, 0), cv2.FILLED)
 
             # Process only instances inside the depth threshold
-            average_depth_val = np.mean(depth_img[binary_mask == 1])
+            average_depth_val = np.nanmean(depth_img[binary_mask == 1])
             if (
                 average_depth_val > self._config.dataset.depth_min_th
                 and average_depth_val < self._config.dataset.depth_max_th
@@ -136,7 +136,8 @@ class SemanticSegmenter:
 
                 # Filter out invalid center
                 if (
-                     box_center_depth <= self._config.dataset.depth_min_th
+                    math.isnan(box_center_depth)
+                    or box_center_depth <= self._config.dataset.depth_min_th
                     or box_center_depth >= self._config.dataset.depth_max_th
                 ):
                     continue
@@ -183,7 +184,7 @@ class SemanticSegmenter:
                     exit(1)
 
                 # Udate the instance mask
-                instances_mask += binary_mask * instance_number
+                instances_mask = instances_mask + (binary_mask * instance_number)
 
         # Save infos for next frame
         self._save_infos_for_next_frame(rgb_img)
@@ -238,10 +239,7 @@ class SemanticSegmenter:
             # Find the nearest center in the previous image
             distances = np.sum((reference_centers - box_center_2d) ** 2, axis=1)
             min_distance_idx = np.argmin(distances).astype(int)
-            if (
-                distances[min_distance_idx]
-                <= 300  
-            ):
+            if distances[min_distance_idx] <= 300:
                 instance_number = reference_ids[min_distance_idx]
                 self._instances_centers[instance_number - 1] = box_center_3d
                 if instance_number - 1 <= self._last_ref_center_idx:
@@ -275,9 +273,7 @@ class SemanticSegmenter:
                 ]
             )
             max_overlapping_idx = np.argmax(ious)
-            if (
-                ious[max_overlapping_idx] >= 0.1
-            ):  
+            if ious[max_overlapping_idx] >= 0.1:
                 instance_number = reference_ids[max_overlapping_idx]
                 self._instances_centers[instance_number - 1] = box_center_3d
                 if instance_number - 1 <= self._last_ref_center_idx:
