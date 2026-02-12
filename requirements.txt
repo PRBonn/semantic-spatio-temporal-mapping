@@ -1,0 +1,15 @@
+numpy<2.0
+tqdm
+pathlib
+rich
+open3d==0.16
+polyscope==2.2.1
+typer==0.6.0
+pyyaml>=5.4.1
+pyquaternion
+pydantic>=1.10.17
+opencv-python==4.9.0.80
+matplotlib==3.5.1
+torch==2.3.0
+dill
+ultralytics==8.2.64

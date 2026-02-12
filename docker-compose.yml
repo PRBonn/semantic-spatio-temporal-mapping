@@ -10,7 +10,7 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./:/home/dev/work
-      - ${DATA_DIR:PATHTODATASET}:/home/dev/work/data/
+      - /home/luca/HDD8T/datasets/papers_datasets/lobefaro2025ral/:/home/dev/work/data/
     environment:
       - DISPLAY=${DISPLAY}
     deploy:

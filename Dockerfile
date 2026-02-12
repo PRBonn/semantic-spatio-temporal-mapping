@@ -52,6 +52,11 @@ RUN wget https://www.python.org/ftp/python/3.10.9/Python-3.10.9.tgz && \
 RUN sudo update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.10 1 && \
     sudo update-alternatives --install /usr/bin/pip3 pip3 /usr/local/bin/pip3.10 1
 
+# Install python dependencies
+COPY requirements.txt /tmp/requirements.txt
+RUN pip3 install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip3 install --no-cache-dir -r /tmp/requirements.txt
+
 ARG UID=1000
 ARG GID=1000
 # not an arg, because otherwise its a pain in the ass
@@ -73,5 +78,5 @@ ENV PATH="${PATH}:${HOME}/.local/bin"
 ENV SHELL=/usr/bin/bash
 SHELL ["/bin/bash", "-lc"]
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+# ENTRYPOINT ["./entrypoint.sh"]
 CMD ["/bin/bash", "-i"]
