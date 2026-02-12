@@ -78,5 +78,5 @@ ENV PATH="${PATH}:${HOME}/.local/bin"
 ENV SHELL=/usr/bin/bash
 SHELL ["/bin/bash", "-lc"]
 COPY entrypoint.sh /entrypoint.sh
-# ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 CMD ["/bin/bash", "-i"]
